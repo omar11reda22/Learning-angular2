@@ -1,0 +1,91 @@
+<!-- <table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of students; track item.id; let o = $odd) {
+      <tr [ngClass]="{ 'green': o }">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.age }}</td>
+      </tr>
+    }
+    @empty {
+      <tr>
+        <td colspan="3">No data available</td>
+      </tr>
+    }
+  </tbody>
+</table> -->
+<!-- 
+<app-student-add (onStudentadded) = "Savep($event)"></app-student-add> 
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (student of students; track student.id) {
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.Name }}</td>
+                <td>{{ student.age }}</td>
+                 <td>
+            <button class="btn btn-warning" >Update</button>
+            <button class="btn btn-danger" >Delete</button>
+            <button class="btn btn-info">Display</button>
+                </td>
+            </tr>
+        }
+       
+        @empty {
+            <tr>
+                <td colspan="3">No data available</td>
+            </tr>
+        }
+    </tbody>
+</table> -->
+
+<div id="add"  > 
+<app-student-add (onStudentadded) = "Savep($event)"></app-student-add> 
+</div>
+<div id="update" >
+<app-student-update [student]="selectedStudent"></app-student-update>
+</div>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (student of students; track student.id) {
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.Name }}</td>
+                <td>{{ student.age }}</td>
+                <td>
+                    <button class="btn btn-warning" (click)="showUpdate()">Update</button>
+                    <button class="btn btn-danger" (click) = "deleto(student.id)">Delete</button>
+                    <button class="btn btn-info">Display</button>
+                <button class="btn btn-success" (click)="showAdd()" >Add</button>
+                </td>
+            </tr>
+        }
+        @empty {
+            <tr>
+                <td colspan="4">No data available</td>
+            </tr>
+        }
+    </tbody>
+</table>

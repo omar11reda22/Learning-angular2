@@ -1,0 +1,17 @@
+<div class="form-container">
+    <div class="form-group">
+        <label for="id">ID</label>
+        <input type="text" class="form-control" id="id" [(ngModel)]="nstd.id">
+    </div>
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" class="form-control" id="Name" [(ngModel)]="nstd.Name">
+    </div>
+    <div class="form-group">
+        <label for="age">Age</label>
+        <input type="text" class="form-control" id="age" [(ngModel)]="nstd.age">
+    </div>
+    <div class="form-group">
+        <input type="button" class="btn btn-primary" value="Add" (click)="Save()">
+    </div>
+</div>

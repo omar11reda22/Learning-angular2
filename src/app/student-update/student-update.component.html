@@ -1,0 +1,17 @@
+<div class="form-container">
+    <div class="form-group">
+        <label for="id">ID</label>
+        <input type="text" class="form-control"  [(ngModel)]="student.id">
+    </div>
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" class="form-control"  [(ngModel)]="student.Name">
+    </div>
+    <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" class="form-control"  [(ngModel)]="student.age">
+    </div>
+    <div class="form-group">
+        <input type="button" class="btn btn-primary" value="save Update" (click) = "saveUpdate()" >
+    </div>
+</div>
