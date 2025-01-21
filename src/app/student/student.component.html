@@ -53,39 +53,41 @@
     </tbody>
 </table> -->
 
-<div id="add"  > 
-<app-student-add (onStudentadded) = "Savep($event)"></app-student-add> 
+<div id="add">
+  <app-student-add (onStudentadded)="Savep($event)"></app-student-add>
 </div>
-<div id="update" >
-<app-student-update [student]="selectedStudent"></app-student-update>
+<div id="update">
+  <app-student-update [student]="selectedStudent" (updateStudent) = "Savep($event)"></app-student-update>
 </div>
 <table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @for (student of students; track student.id) {
-            <tr>
-                <td>{{ student.id }}</td>
-                <td>{{ student.Name }}</td>
-                <td>{{ student.age }}</td>
-                <td>
-                    <button class="btn btn-warning" (click)="showUpdate()">Update</button>
-                    <button class="btn btn-danger" (click) = "deleto(student.id)">Delete</button>
-                    <button class="btn btn-info">Display</button>
-                <button class="btn btn-success" (click)="showAdd()" >Add</button>
-                </td>
-            </tr>
-        }
-        @empty {
-            <tr>
-                <td colspan="4">No data available</td>
-            </tr>
-        }
-    </tbody>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (student of students; track student.id) {
+    <tr>
+      <td>{{ student.id }}</td>
+      <td>{{ student.Name }}</td>
+      <td>{{ student.age }}</td>
+      <td>
+        <button class="btn btn-warning" (click)="showUpdate(student)">Update</button>
+        <button class="btn btn-danger" (click)="deleto(student.id!)">
+          Delete
+        </button>
+        <button class="btn btn-info">Display</button>
+        <button class="btn btn-success" (click)="showAdd()">Add</button>
+
+      </td>
+    </tr>
+    } @empty {
+    <tr>ws4 e5-
+      <td colspan="4">No data available</td>
+    </tr>
+    }
+  </tbody>
 </table>

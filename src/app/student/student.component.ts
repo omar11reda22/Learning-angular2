@@ -4,7 +4,6 @@ import { StudentUpdateComponent } from '../student-update/student-update.compone
 import { Students } from '../Models/student';
 import 'bootstrap/dist/css/bootstrap.css';
 
-
 @Component({
   selector: 'app-student',
   imports: [StudentAddComponent, StudentUpdateComponent],
@@ -18,7 +17,12 @@ export class StudentComponent {
     new Students(3, 'mohamed', 25),
   ];
   Savep(s: Students) {
-    this.students.push(new Students(s.id, s.Name, s.age));
+    const index = this.students.findIndex((student) => student.id === s.id);
+    if (index !== -1) {
+      this.students[index] = s; // Update existing student
+    } else {
+      this.students.push(new Students(s.id, s.Name, s.age)); // Add new student
+    }
   }
   showAddForm = false;
   showUpdateForm = false;
@@ -34,7 +38,8 @@ export class StudentComponent {
 
   selectedStudent: Students | null = null;
 
-  showUpdate() {
+  showUpdate(student: Students) {
+    this.selectedStudent = { ...student };
     const addDiv = document.getElementById('add');
     const updateDiv = document.getElementById('update');
     if (addDiv && updateDiv) {
@@ -42,7 +47,7 @@ export class StudentComponent {
       updateDiv.style.display = 'block';
     }
   }
-  deleto(id: number) {
+  deleto(id: number | null) {
     // Remove the student from the array
     this.students = this.students.filter((student) => student.id !== id);
   }
